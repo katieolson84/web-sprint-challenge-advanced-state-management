@@ -16,7 +16,7 @@ const { worker } = require('./mocks/browser');
 worker.start();
 
 // Redux store
-const store = createStore(reducer, applyMiddleware(thunk, logger));
+const store = (createStore(reducer, applyMiddleware(thunk, logger)));
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById("root"));
 
