@@ -13,13 +13,12 @@ const AddForm = (props) => {
     });
 
     const handleChange = e => {
-        const value = e.target.value;
         setState({
             ...state,
-            [e.target.name]:value,
-            // [e.target.postition]:value,
-            // [e.target.nickname]:value,
-            // [e.target.description]:value,
+            [e.target.name]:e.target.value,
+            // [e.target.postition]:e.target.value,
+            // [e.target.nickname]:e.target.value,
+            // [e.target.description]:e.target.value,
         });
     }
 
@@ -73,14 +72,14 @@ const AddForm = (props) => {
             {
                 props.errorMessage && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {props.errorMessage}</div>
             }
-            <button type="submit" onClick={handleSubmit}>Submit Smurf</button>
+            <button>Submit Smurf</button>
         </form>
     </section>);
 }
 const mapStateToProps = state => {
     return ({
         errorMessage: state.error,
-        
+        smurfs: state.smurfs
     })
 }
 export default connect(mapStateToProps, {newErrorMessage, addSmurf})(AddForm);
