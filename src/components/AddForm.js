@@ -31,7 +31,7 @@ const AddForm = (props) => {
             props.addSmurf(state);
             e.target.reset()
         }
-        console.log(props.addSmurf(state))
+
     }
 
     return(<section>
