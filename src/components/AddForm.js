@@ -29,9 +29,9 @@ const AddForm = (props) => {
             props.newErrorMessage();
         }else{
             props.addSmurf(state);
+            e.target.reset()
         }
-        console.log(props.addSmurf(state))
-       
+        
     }
 
     return(<section>
