@@ -22,6 +22,7 @@ const AddForm = (props) => {
         });
     }
 
+// ! This will give an error message when the fields are not filled out completely, this works!
     const handleSubmit = e => {
         e.preventDefault();
         if (state.name === "" || state.position === "" || state.nickname === "") {

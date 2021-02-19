@@ -15,19 +15,7 @@ import { getSmurf } from './../actions'
         return <h2> Loading Smurfs...</h2>;
     }
 
-    //  if (props.isFetching) {
-    //     return <h1>Loading Smurfs...</h1>;
-    //  }
-
-    // const isLoading = false;
-    // console.log (props.smurfs)
-    // const testSmurf = {
-    //     id:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9",
-    //     name:'Poppa Smurf',
-    //     position:'Village Leader',
-    //     nickname: 'Pops',
-    //     description: 'Papa is the practical village leader and the father figure of 100 or so young Smurfs. He is easily identified by his red Smurf hat, pants, and a shortly-trimmed white beard and moustache.'
-     
+    // this will render the current array of smurfs on the page
     return(
         <div className="listContainer">
             {smurfs.map((smurf) => (
