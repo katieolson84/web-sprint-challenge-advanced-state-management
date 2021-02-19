@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
 // Components
-import  { reducer } from './reducers';
+import  reducer from './reducers';
 import App from "./App";
 
 // Styling

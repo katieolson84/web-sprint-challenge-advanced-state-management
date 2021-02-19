@@ -8,7 +8,7 @@ export const initialState = {
     error: '',
 }
 
-export const reducer = (state= initialState, action)=>{
+const reducer = (state= initialState, action)=>{
     switch(action.type){
         case(FETCHING_SMURF_START):
             return({
@@ -52,7 +52,7 @@ export const reducer = (state= initialState, action)=>{
             return state;
     }
 }
-
+export default reducer;
 
 //Task List:
 //1. Adds the following state values into the initialState:
