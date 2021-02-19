@@ -1,15 +1,23 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { connect } from 'react-redux'
 
 // components
 import Smurf from './Smurf';
 import { getSmurf } from './../actions'
 
- const SmurfList = (state)=> {
-    
-     if (state.isFetching) {
-        return <h1>Loading Smurfs...</h1>;
-     }
+ const SmurfList = ({smurfs, isFetching, getSmurf })=> {
+    useEffect(() => {
+        getSmurf();
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+
+    if(isFetching){
+        return <h2> Loading Smurfs...</h2>;
+    }
+
+    //  if (props.isFetching) {
+    //     return <h1>Loading Smurfs...</h1>;
+    //  }
 
     // const isLoading = false;
     // console.log (props.smurfs)
@@ -19,24 +27,21 @@ import { getSmurf } from './../actions'
     //     position:'Village Leader',
     //     nickname: 'Pops',
     //     description: 'Papa is the practical village leader and the father figure of 100 or so young Smurfs. He is easily identified by his red Smurf hat, pants, and a shortly-trimmed white beard and moustache.'
-    
-
-    // if (isLoading) {
-    //     return <h1>Loading...</h1>;
-    // }
-
+     
     return(
         <div className="listContainer">
-        {state.smurfs.map((smurf) => (
+            {smurfs.map((smurf) => (
                 <Smurf key={smurf.id} smurf={smurf}/>
-        ))}
+            ))}
         </div>
         );
 }
+
 const mapStateToProps = (state) => {
     return({
         smurfs: state.smurfs,
         isFetching: state.isFetching,
+        error: state.error
         
     })
 }

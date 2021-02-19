@@ -6,7 +6,6 @@ export const initialState = {
     smurfs: [],
     isFetching: false,
     error: '',
-    // id: uuid()
 }
 
 export const reducer = (state= initialState, action)=>{
@@ -26,21 +25,21 @@ export const reducer = (state= initialState, action)=>{
         case(FETCHING_SMURF_FAIL):
             return({
                 ...state,
+                isFetching: true,
                 error: "Something is broken..." + action.payload
             })
         case(ADD_SMURF):
             return ({
-            ...state,
-            smurfs: [state.smurfs, action.payload],
-            isFetching: false,
-            id: uuid()
+                ...state,
+                smurfs: [state.smurfs, action.payload],
+                isFetching: false,
+                id: uuid()
             })
         case(NEW_ERROR_MESSAGE):
             return ({
                 ...state,
                 isFetching: true,
                 error: "Oops, it looks like you are missing some info!"
-
             })
         default:
             return state;

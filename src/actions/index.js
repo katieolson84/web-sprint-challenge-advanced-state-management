@@ -3,7 +3,9 @@ import axios from 'axios';
 export const FETCHING_SMURF_START = 'FETCHING_SMURF_START';
 export const FETCHING_SMURF_SUCCESS = "FETCHING_SMURF_SUCCESS";
 export const FETCHING_SMURF_FAIL = "FETCHING_SMURF_FAIL";
+
 export const ADD_SMURF = "ADD_SMURF";
+
 export const NEW_ERROR_MESSAGE = "NEW_ERROR_MESSAGE";
 
 export const getSmurf = () => {
@@ -13,10 +15,10 @@ export const getSmurf = () => {
             .get(`http://localhost:3333/smurfs`)
             .then(res => {
                 dispatch({type: FETCHING_SMURF_SUCCESS, payload:res.data});
-                // console.log (res.data)
+                console.log (res.data)
             })
             .catch(err => {
-                dispatch({type: FETCHING_SMURF_FAIL, payload: err.Response.message});
+                dispatch({type: FETCHING_SMURF_FAIL, payload: err.Response.data});
             })
     })
 }
@@ -30,7 +32,7 @@ export const addSmurf = (newSmurf) => {
                 dispatch({type:FETCHING_SMURF_SUCCESS, payload:res.data});
             })
             .catch(err => {
-                dispatch({type:FETCHING_SMURF_FAIL, payload: err.response.message});
+                dispatch({type:FETCHING_SMURF_FAIL, payload: err.response.data});
             });
     });
 }
