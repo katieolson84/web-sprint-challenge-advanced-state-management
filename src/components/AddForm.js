@@ -73,7 +73,7 @@ const AddForm = (props) => {
             {
                 errorMessage && <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {props.error}</div>
             }
-            <button>Submit Smurf</button>
+            <button type="submit" onClick={handleSubmit}>Submit Smurf</button>
         </form>
     </section>);
 }

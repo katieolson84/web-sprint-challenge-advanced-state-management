@@ -1,10 +1,18 @@
 
 import {FETCHING_SMURF_START, FETCHING_SMURF_SUCCESS, FETCHING_SMURF_FAIL, ADD_SMURF} from './../actions'
+import uuid from 'react-uuid'
 
 export const initialState = {
     smurfs: [],
     isFetching: false,
     error: '',
+    newSmurf: [{
+        name: '',
+        position: '',
+        nickname: '',
+        descriptions: '',
+        id: uuid(),
+    }]
 }
 
 export const reducer = (state= initialState, action)=>{
@@ -18,7 +26,7 @@ export const reducer = (state= initialState, action)=>{
         case(FETCHING_SMURF_SUCCESS):
             return({
                 ...state,
-                smurf: action.payload,
+                smurfs: action.payload,
                 isFetching: false
             });
         case(FETCHING_SMURF_FAIL):
@@ -35,7 +43,7 @@ export const reducer = (state= initialState, action)=>{
             }
             return({
                 ...state,
-                smurf: [...state.smurf, newSmurf]
+                smurfs: [...state.smurfs, newSmurf]
             })
         default:
             return state;
