@@ -1,18 +1,12 @@
 
-import {FETCHING_SMURF_START, FETCHING_SMURF_SUCCESS, FETCHING_SMURF_FAIL, ADD_SMURF} from './../actions'
+import {FETCHING_SMURF_START, FETCHING_SMURF_SUCCESS, FETCHING_SMURF_FAIL, ADD_SMURF, NEW_ERROR_MESSAGE} from './../actions'
 import uuid from 'react-uuid'
 
 export const initialState = {
     smurfs: [],
     isFetching: false,
     error: '',
-    newSmurf: [{
-        name: '',
-        position: '',
-        nickname: '',
-        descriptions: '',
-        id: uuid(),
-    }]
+    // id: uuid()
 }
 
 export const reducer = (state= initialState, action)=>{
@@ -32,25 +26,26 @@ export const reducer = (state= initialState, action)=>{
         case(FETCHING_SMURF_FAIL):
             return({
                 ...state,
-                error: action.payload
+                error: "Something is broken..." + action.payload
             })
         case(ADD_SMURF):
-            const newSmurf = {
-                name: action.payload,
-                position: action.payload,
-                nickname: action.payload,
-                description: action.payload
-            }
-            return({
+            return ({
+            ...state,
+            smurfs: [state.smurfs, action.payload],
+            isFetching: false
+            })
+        case(NEW_ERROR_MESSAGE):
+            return ({
                 ...state,
-                smurfs: [...state.smurfs, newSmurf]
+                isFetching: true,
+                error: "Oops, it looks like you are missing some info!"
+
             })
         default:
             return state;
     }
 }
 
-export default reducer;
 
 //Task List:
 //1. Adds the following state values into the initialState:

@@ -1,19 +1,14 @@
-import React, { useEffect } from 'react';
-import Smurf from './Smurf';
+import React from 'react';
 import { connect } from 'react-redux'
+
+// components
+import Smurf from './Smurf';
 import { getSmurf } from './../actions'
 
- const SmurfList = ({ smurfs, isFetching, error, getSmurf })=> {
-     useEffect(() => {
-         getSmurf();
-     }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-     if (error) {
-         return <h2> Something went wrong: {error}</h2>;
-     }
-
-     if (isFetching){
-         return <h1>Loading...</h1>;
+ const SmurfList = (state)=> {
+    
+     if (state.isFetching) {
+        return <h1>Loading Smurfs...</h1>;
      }
 
     // const isLoading = false;
@@ -32,10 +27,8 @@ import { getSmurf } from './../actions'
 
     return(
         <div className="listContainer">
-        {smurfs.map((item) => (
-            <div key={item.id}>
-                <Smurf smurf={smurfs}/>
-            </div>
+        {state.smurfs.map((smurf) => (
+                <Smurf key={smurf.id} smurf={smurf}/>
         ))}
         </div>
         );
@@ -44,7 +37,7 @@ const mapStateToProps = state => {
     return{
         smurfs: state.smurfs,
         isFetching: state.isFetching,
-        error: state.error
+        
     }
 }
 export default connect(mapStateToProps, {getSmurf})(SmurfList);
