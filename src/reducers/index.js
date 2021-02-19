@@ -32,7 +32,8 @@ export const reducer = (state= initialState, action)=>{
             return ({
             ...state,
             smurfs: [state.smurfs, action.payload],
-            isFetching: false
+            isFetching: false,
+            id: uuid()
             })
         case(NEW_ERROR_MESSAGE):
             return ({

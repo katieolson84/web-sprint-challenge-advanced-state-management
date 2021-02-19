@@ -33,12 +33,12 @@ import { getSmurf } from './../actions'
         </div>
         );
 }
-const mapStateToProps = state => {
-    return{
+const mapStateToProps = (state) => {
+    return({
         smurfs: state.smurfs,
         isFetching: state.isFetching,
         
-    }
+    })
 }
 export default connect(mapStateToProps, {getSmurf})(SmurfList);
 
