@@ -5,6 +5,7 @@ export const FETCHING_SMURF_SUCCESS = "FETCHING_SMURF_SUCCESS";
 export const FETCHING_SMURF_FAIL = "FETCHING_SMURF_FAIL";
 
 export const ADD_SMURF = "ADD_SMURF";
+export const ADD_SMURF_SUCCESS = "ADD_SMURF_SUCCESS";
 
 export const NEW_ERROR_MESSAGE = "NEW_ERROR_MESSAGE";
 
@@ -29,7 +30,7 @@ export const addSmurf = (newSmurf) => {
         axios
             .post(`http://localhost:3333/smurfs`, newSmurf)
             .then(res=> {
-                dispatch({type:FETCHING_SMURF_SUCCESS, payload:res.data});
+                dispatch({type:ADD_SMURF_SUCCESS, payload:res.data});
             })
             .catch(err => {
                 dispatch({type:FETCHING_SMURF_FAIL, payload: err.response.data});

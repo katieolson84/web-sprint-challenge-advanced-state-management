@@ -1,5 +1,5 @@
 
-import {FETCHING_SMURF_START, FETCHING_SMURF_SUCCESS, FETCHING_SMURF_FAIL, ADD_SMURF, NEW_ERROR_MESSAGE} from './../actions'
+import {FETCHING_SMURF_START, FETCHING_SMURF_SUCCESS, FETCHING_SMURF_FAIL, ADD_SMURF, ADD_SMURF_SUCCESS, NEW_ERROR_MESSAGE} from './../actions'
 import uuid from 'react-uuid'
 
 export const initialState = {
@@ -26,14 +26,21 @@ export const reducer = (state= initialState, action)=>{
             return({
                 ...state,
                 isFetching: true,
-                error: "Something is broken..." + action.payload
+                error: "Something is broken..." 
             })
         case(ADD_SMURF):
             return ({
                 ...state,
-                smurfs: [state.smurfs, action.payload],
-                isFetching: false,
+                smurfs: [state.smurfs],
+                isFetching: true,
                 id: uuid()
+            })
+        case(ADD_SMURF_SUCCESS):
+            return ({
+                ...state,
+                smurfs: action.payload,
+                isFetching: false,
+              
             })
         case(NEW_ERROR_MESSAGE):
             return ({

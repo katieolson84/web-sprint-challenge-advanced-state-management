@@ -15,7 +15,7 @@ import { getSmurf } from './../actions'
         return <h2> Loading Smurfs...</h2>;
     }
 
-    // this will render the current array of smurfs on the page
+    // ! this will render the current array of smurfs on the page, works with current array from API
     return(
         <div className="listContainer">
             {smurfs.map((smurf) => (

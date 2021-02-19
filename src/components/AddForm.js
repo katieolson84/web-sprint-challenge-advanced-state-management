@@ -16,9 +16,9 @@ const AddForm = (props) => {
         setState({
             ...state,
             [e.target.name]:e.target.value,
-            // [e.target.postition]:e.target.value,
-            // [e.target.nickname]:e.target.value,
-            // [e.target.description]:e.target.value,
+            [e.target.postition]:e.target.value,
+            [e.target.nickname]:e.target.value,
+            [e.target.description]:e.target.value,
         });
     }
 
@@ -30,6 +30,7 @@ const AddForm = (props) => {
         }else{
             props.addSmurf(state);
         }
+        console.log(props.addSmurf(state))
        
     }
 
